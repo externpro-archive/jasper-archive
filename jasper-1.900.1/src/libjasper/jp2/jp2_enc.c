@@ -342,7 +342,15 @@ int sgnd;
 
 	/* Output the JPEG-2000 code stream. */
 
+  /** It's good to account for the jp2 overhead to meet target bit rates, but
+   *  there are problems if you specify bit rates for a number of levels and
+   *  the last layer's bit rate doesn't match because of the overhead.
+   */
+#if 0
 	overhead = jas_stream_getrwcount(out);
+#else
+	overhead = 0;
+#endif
 	sprintf(buf, "%s\n_jp2overhead=%lu\n", (optstr ? optstr : ""),
 	  (unsigned long) overhead);
 
