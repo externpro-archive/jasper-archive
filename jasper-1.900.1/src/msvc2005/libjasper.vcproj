@@ -90,7 +90,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -168,7 +168,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -244,7 +244,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -322,7 +322,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -398,7 +398,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -476,7 +476,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
-				CommandLine="cd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h include\jasper&#x0D;&#x0A;copy $(ProjectDir)..\libjasper\include\jasper\*.h.in include\jasper&#x0D;&#x0A;:theend&#x0D;&#x0A;"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\jasper goto theend&#x0D;&#x0A;mkdir include\jasper&#x0D;&#x0A;echo &quot;Copying file(s) into include\jasper&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;pushd include\jasper&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)..\libjasper\include\jasper\*.h.in&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 	</Configurations>
