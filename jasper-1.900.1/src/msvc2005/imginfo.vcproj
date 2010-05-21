@@ -70,11 +70,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="odbc32.lib odbccp32.lib libjasper.lib"
+				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile=".\Win32_Release/imginfo.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)lib_$(PlatformName)\$(ConfigurationName)"
+				AdditionalLibraryDirectories=""
 				ProgramDatabaseFile=".\Win32_Release/imginfo.pdb"
 				SubSystem="1"
 				TargetMachine="1"
@@ -162,11 +162,11 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="odbc32.lib odbccp32.lib libjasper.lib"
+				AdditionalDependencies="odbc32.lib odbccp32.lib"
 				OutputFile=".\Win32_Debug/imginfo.exe"
 				LinkIncremental="2"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(SolutionDir)lib_$(PlatformName)\$(ConfigurationName)"
+				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile=".\Win32_Debug/imginfo.pdb"
 				SubSystem="1"
