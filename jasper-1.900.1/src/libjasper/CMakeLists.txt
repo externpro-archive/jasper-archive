@@ -3,14 +3,16 @@ set(lib_name libjasper)
 # preprocessor
 if(MSVC)
   add_definitions(
+    -DJAS_WIN_MSVC_BUILD
+    -D_CRT_NONSTDC_NO_DEPRECATE
     -D_CRT_SECURE_NO_WARNINGS
-  )
+    )
 endif()
 #######################################
 # include directories
 include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+  )
 #######################################
 # library sources
 ###################
@@ -30,7 +32,7 @@ set(base_srcs
   base/jas_tmr.c
   base/jas_tvp.c
   base/jas_version.c
-)
+  )
 source_group(base FILES ${base_srcs})
 list(APPEND ${lib_name}_libsrcs ${base_srcs})
 ###################
@@ -41,7 +43,7 @@ set(bmp_srcs
   bmp/bmp_dec.c
   bmp/bmp_enc.c
   bmp/bmp_enc.h
-)
+  )
 source_group(bmp FILES ${bmp_srcs})
 list(APPEND ${lib_name}_libsrcs ${bmp_srcs})
 ###################
@@ -66,7 +68,7 @@ set(include_srcs
   include/jasper/jas_tvp.h
   include/jasper/jas_types.h
   include/jasper/jas_version.h
-)
+  )
 source_group(include FILES ${include_srcs})
 list(APPEND ${lib_name}_libsrcs ${include_srcs})
 ###################
@@ -77,7 +79,7 @@ set(jp2_srcs
   jp2/jp2_dec.c
   jp2/jp2_dec.h
   jp2/jp2_enc.c
-)
+  )
 source_group(jp2 FILES ${jp2_srcs})
 list(APPEND ${lib_name}_libsrcs ${jp2_srcs})
 ###################
@@ -124,7 +126,7 @@ set(jpc_srcs
   jpc/jpc_tsfb.h
   jpc/jpc_util.c
   jpc/jpc_util.h
-)
+  )
 source_group(jpc FILES ${jpc_srcs})
 list(APPEND ${lib_name}_libsrcs ${jpc_srcs})
 ###################
@@ -133,7 +135,7 @@ set(jpg_srcs
   jpg/jpg_cod.h
   jpg/jpg_dummy.c
   jpg/jpg_val.c
-)
+  )
 source_group(jpg FILES ${jpg_srcs})
 list(APPEND ${lib_name}_libsrcs ${jpg_srcs})
 ###################
@@ -141,7 +143,7 @@ list(APPEND ${lib_name}_libsrcs ${jpg_srcs})
 set(mif_srcs
   mif/mif_cod.c
   mif/mif_cod.h
-)
+  )
 source_group(mif FILES ${mif_srcs})
 list(APPEND ${lib_name}_libsrcs ${mif_srcs})
 ###################
@@ -152,7 +154,7 @@ set(pgx_srcs
   pgx/pgx_dec.c
   pgx/pgx_enc.c
   pgx/pgx_enc.h
-)
+  )
 source_group(pgx FILES ${pgx_srcs})
 list(APPEND ${lib_name}_libsrcs ${pgx_srcs})
 ###################
@@ -163,7 +165,7 @@ set(pnm_srcs
   pnm/pnm_dec.c
   pnm/pnm_enc.c
   pnm/pnm_enc.h
-)
+  )
 source_group(pnm FILES ${pnm_srcs})
 list(APPEND ${lib_name}_libsrcs ${pnm_srcs})
 ###################
@@ -174,7 +176,7 @@ set(ras_srcs
   ras/ras_dec.c
   ras/ras_enc.c
   ras/ras_enc.h
-)
+  )
 source_group(ras FILES ${ras_srcs})
 list(APPEND ${lib_name}_libsrcs ${ras_srcs})
 #######################################
@@ -182,4 +184,3 @@ list(APPEND ${lib_name}_libsrcs ${ras_srcs})
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
 # strip off the "lib" prefix, since it's already libjasper
 set_target_properties(${lib_name} PROPERTIES PREFIX "")
-
