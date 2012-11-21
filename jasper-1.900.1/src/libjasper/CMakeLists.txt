@@ -184,3 +184,7 @@ list(APPEND ${lib_name}_libsrcs ${ras_srcs})
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
 # strip off the "lib" prefix, since it's already libjasper
 set_target_properties(${lib_name} PROPERTIES PREFIX "")
+#######################################
+# install
+install(TARGETS ${lib_name} DESTINATION lib${NUMBITS})
+install(FILES ${include_srcs} include/jasper)
