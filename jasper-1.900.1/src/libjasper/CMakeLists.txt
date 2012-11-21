@@ -187,4 +187,4 @@ set_target_properties(${lib_name} PROPERTIES PREFIX "")
 #######################################
 # install
 install(TARGETS ${lib_name} DESTINATION lib${NUMBITS})
-install(FILES ${include_srcs} include/jasper)
+install(FILES ${include_srcs} DESTINATION include/jasper)
