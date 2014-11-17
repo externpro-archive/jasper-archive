@@ -84,7 +84,14 @@
 #if defined(HAVE_UNISTD_H)
 #include <unistd.h>
 #endif
+#if defined(HAVE_LIMITS_H)
+#include <limits.h>
+#endif
 #include <jasper/jas_types.h>
+
+#ifndef PATH_MAX
+#define PATH_MAX MAX_PATH
+#endif
 
 #ifdef __cplusplus
 extern "C" {
@@ -251,7 +258,7 @@ typedef struct {
 typedef struct {
 	int fd;
 	int flags;
-	char pathname[L_tmpnam + 1];
+	char pathname[PATH_MAX + 1];
 } jas_stream_fileobj_t;
 
 #define	JAS_STREAM_FILEOBJ_DELONCLOSE	0x01
