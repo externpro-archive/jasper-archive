@@ -14,7 +14,12 @@
 /* The preprocessor symbol JAS_WIN_MSVC_BUILD should not be defined
   unless the JasPer software is being built under Microsoft Windows
   using Microsoft Visual C. */
-#if !defined(JAS_WIN_MSVC_BUILD)
+/* SDL mod: What about our own MSVC projects that include JasPer headers?
+  Looking for JAS_WIN_MSVC_BUILD would mean that our MSVC projects would need
+  to add this as a preprocessor symbol. That's lame. So I've added a _MSC_VER
+  check that will determine whether this is built with MSVC. I could probably
+  get rid of their JAS_WIN_MSVC_BUILD stuff, but I'll leave it... */
+#if !defined(JAS_WIN_MSVC_BUILD) && !defined(_MSC_VER)
 /* A configure-based build is being used. */
 
 
