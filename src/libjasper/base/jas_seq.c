@@ -266,6 +266,8 @@ void jas_matrix_divpow2(jas_matrix_t *matrix, int n)
 	int rowstep;
 	jas_seqent_t *data;
 
+	if (!matrix || !matrix->numrows_ || !matrix->rows_)
+		return;
 	rowstep = jas_matrix_rowstep(matrix);
 	for (i = matrix->numrows_, rowstart = matrix->rows_[0]; i > 0; --i,
 	  rowstart += rowstep) {
@@ -286,6 +288,8 @@ void jas_matrix_clip(jas_matrix_t *matrix, jas_seqent_t minval, jas_seqent_t max
 	jas_seqent_t *data;
 	int rowstep;
 
+	if (!matrix || !matrix->numrows_ || !matrix->rows_)
+		return;
 	rowstep = jas_matrix_rowstep(matrix);
 	for (i = matrix->numrows_, rowstart = matrix->rows_[0]; i > 0; --i,
 	  rowstart += rowstep) {
@@ -311,6 +315,8 @@ void jas_matrix_asr(jas_matrix_t *matrix, int n)
 	jas_seqent_t *data;
 
 	assert(n >= 0);
+	if (!matrix || !matrix->numrows_ || !matrix->rows_)
+		return;
 	rowstep = jas_matrix_rowstep(matrix);
 	for (i = matrix->numrows_, rowstart = matrix->rows_[0]; i > 0; --i,
 	  rowstart += rowstep) {
@@ -329,6 +335,8 @@ void jas_matrix_asl(jas_matrix_t *matrix, int n)
 	int rowstep;
 	jas_seqent_t *data;
 
+	if (!matrix || !matrix->numrows_ || !matrix->rows_)
+		return;
 	rowstep = jas_matrix_rowstep(matrix);
 	for (i = matrix->numrows_, rowstart = matrix->rows_[0]; i > 0; --i,
 	  rowstart += rowstep) {
@@ -371,6 +379,8 @@ void jas_matrix_setall(jas_matrix_t *matrix, jas_seqent_t val)
 	int rowstep;
 	jas_seqent_t *data;
 
+	if (!matrix || !matrix->numrows_ || !matrix->rows_)
+		return;
 	rowstep = jas_matrix_rowstep(matrix);
 	for (i = matrix->numrows_, rowstart = matrix->rows_[0]; i > 0; --i,
 	  rowstart += rowstep) {
@@ -399,7 +409,7 @@ jas_matrix_t *jas_seq2d_input(FILE *in)
 	if (!(matrix = jas_seq2d_create(xoff, yoff, xoff + numcols, yoff + numrows)))
 		return 0;
 
-	if (jas_matrix_numrows(matrix) != numrows || jas_matrix_numcols(matrix) != numcols) {
+	if (!matrix || jas_matrix_numrows(matrix) != numrows || jas_matrix_numcols(matrix) != numcols) {
 		abort();
 	}
 

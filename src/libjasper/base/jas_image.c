@@ -433,7 +433,7 @@ int jas_image_readcmpt(jas_image_t *image, int cmptno, jas_image_coord_t x,
 		return -1;
 	}
 
-	if (jas_matrix_numrows(data) != height || jas_matrix_numcols(data) != width) {
+	if (!height || !width || jas_matrix_numrows(data) != height || jas_matrix_numcols(data) != width) {
 		if (jas_matrix_resize(data, height, width)) {
 			return -1;
 		}
@@ -486,7 +486,7 @@ int jas_image_writecmpt(jas_image_t *image, int cmptno, jas_image_coord_t x, jas
 		return -1;
 	}
 
-	if (jas_matrix_numrows(data) != height || jas_matrix_numcols(data) != width) {
+	if (!height || !width || jas_matrix_numrows(data) != height || jas_matrix_numcols(data) != width) {
 		return -1;
 	}
 
