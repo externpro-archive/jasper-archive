@@ -77,7 +77,9 @@
 #include <jasper/jas_config.h>
 
 #include <stdio.h>
+#if defined(HAVE_LIMITS_H)
 #include <limits.h>
+#endif
 #if defined(HAVE_FCNTL_H)
 #include <fcntl.h>
 #endif
