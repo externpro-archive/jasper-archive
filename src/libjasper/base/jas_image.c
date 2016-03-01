@@ -268,15 +268,19 @@ static jas_image_cmpt_t *jas_image_cmpt_copy(jas_image_cmpt_t *cmpt)
 	newcmpt->cps_ = cmpt->cps_;
 	newcmpt->type_ = cmpt->type_;
 	if (!(newcmpt->stream_ = jas_stream_memopen(0, 0))) {
+		jas_image_cmpt_destroy(newcmpt);
 		return 0;
 	}
 	if (jas_stream_seek(cmpt->stream_, 0, SEEK_SET)) {
+		jas_image_cmpt_destroy(newcmpt);
 		return 0;
 	}
 	if (jas_stream_copy(newcmpt->stream_, cmpt->stream_, -1)) {
+		jas_image_cmpt_destroy(newcmpt);
 		return 0;
 	}
 	if (jas_stream_seek(newcmpt->stream_, 0, SEEK_SET)) {
+		jas_image_cmpt_destroy(newcmpt);
 		return 0;
 	}
 	return newcmpt;
@@ -1443,5 +1447,11 @@ jas_image_dump(outimage, stderr);
 #endif
 	return outimage;
 error:
+	if (xform)
+		jas_cmxform_destroy(xform);
+	if (inimage)
+		jas_image_destroy(inimage);
+	if (outimage)
+		jas_image_destroy(outimage);
 	return 0;
 }

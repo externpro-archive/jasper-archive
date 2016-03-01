@@ -205,16 +205,19 @@ int bmp_encode(jas_image_t *image, jas_stream_t *out, char *optstr)
 
 	/* Write the bitmap header. */
 	if (bmp_puthdr(out, &hdr)) {
+		bmp_info_destroy(info);
 		return -1;
 	}
 
 	/* Write the bitmap information. */
 	if (bmp_putinfo(out, info)) {
+		bmp_info_destroy(info);
 		return -1;
 	}
 
 	/* Write the bitmap data. */
 	if (bmp_putdata(out, info, image, enc->cmpts)) {
+		bmp_info_destroy(info);
 		return -1;
 	}
 

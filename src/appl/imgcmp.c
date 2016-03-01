@@ -507,6 +507,7 @@ jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata)
 
 	for (i = 0; i < 3; ++i) {
 		if (!(diffdata[i] = jas_matrix_create(height, width))) {
+			jas_image_destroy(diffimage);
 			fprintf(stderr, "internal error\n");
 			return 0;
 		}
@@ -534,6 +535,7 @@ jas_image_t *makediffimage(jas_matrix_t *origdata, jas_matrix_t *recondata)
 
 	for (i = 0; i < 3; ++i) {
 		if (jas_image_writecmpt(diffimage, i, 0, 0, width, height, diffdata[i])) {
+			jas_image_destroy(diffimage);
 			return 0;
 		}
 	}

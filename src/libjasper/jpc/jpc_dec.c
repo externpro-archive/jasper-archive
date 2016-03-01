@@ -465,6 +465,7 @@ static int jpc_dec_process_sot(jpc_dec_t *dec, jpc_ms_t *ms)
 
 		if (!(dec->image = jas_image_create(dec->numcomps, compinfos,
 		  JAS_CLRSPC_UNKNOWN))) {
+			jas_free(compinfos);
 			return -1;
 		}
 		jas_free(compinfos);
@@ -1490,10 +1491,11 @@ static jpc_dec_cp_t *jpc_dec_cp_create(uint_fast16_t numcomps)
 	cp->mctid = 0;
 	cp->csty = 0;
 	if (!(cp->ccps = jas_alloc2(cp->numcomps, sizeof(jpc_dec_ccp_t)))) {
+		jpc_dec_cp_destroy(cp);
 		return 0;
 	}
 	if (!(cp->pchglist = jpc_pchglist_create())) {
-		jas_free(cp->ccps);
+		jpc_dec_cp_destroy(cp);
 		return 0;
 	}
 	for (compno = 0, ccp = cp->ccps; compno < cp->numcomps;
