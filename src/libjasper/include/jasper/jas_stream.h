@@ -77,6 +77,7 @@
 #include <jasper/jas_config.h>
 
 #include <stdio.h>
+#include <limits.h>
 #if defined(HAVE_FCNTL_H)
 #include <fcntl.h>
 #endif
@@ -97,6 +98,12 @@ extern "C" {
 /* On most UNIX systems, we probably need to define O_BINARY ourselves. */
 #ifndef O_BINARY
 #define O_BINARY	0
+#endif
+
+#ifdef PATH_MAX
+#define JAS_PATH_MAX PATH_MAX
+#else
+#define JAS_PATH_MAX 4096
 #endif
 
 /*
@@ -251,7 +258,7 @@ typedef struct {
 typedef struct {
 	int fd;
 	int flags;
-	char pathname[L_tmpnam + 1];
+	char pathname[JAS_PATH_MAX + 1];
 } jas_stream_fileobj_t;
 
 #define	JAS_STREAM_FILEOBJ_DELONCLOSE	0x01
