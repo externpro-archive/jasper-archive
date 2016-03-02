@@ -3,7 +3,6 @@ set(lib_name libjasper)
 # preprocessor
 if(MSVC)
   add_definitions(
-    -DJAS_WIN_MSVC_BUILD
     -D_CRT_NONSTDC_NO_DEPRECATE
     -D_CRT_SECURE_NO_WARNINGS
     )
@@ -51,7 +50,6 @@ list(APPEND ${lib_name}_libsrcs ${bmp_srcs})
 set(include_srcs
   include/jasper/jas_cm.h
   include/jasper/jas_config2.h
-  include/jasper/jas_config.h
   include/jasper/jas_debug.h
   include/jasper/jas_fix.h
   include/jasper/jas_getopt.h
@@ -68,6 +66,7 @@ set(include_srcs
   include/jasper/jas_tvp.h
   include/jasper/jas_types.h
   include/jasper/jas_version.h
+  ${PROJECT_BINARY_DIR}/jasper/jas_config.h
   )
 source_group(include FILES ${include_srcs})
 list(APPEND ${lib_name}_libsrcs ${include_srcs})
