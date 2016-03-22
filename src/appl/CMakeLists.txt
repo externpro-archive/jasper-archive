@@ -1,0 +1,6 @@
+set(exes imgcmp jasper)
+foreach(exe ${exes})
+  add_executable(${exe} ${exe}.c)
+  target_link_libraries(${exe} libjasper ${JAS_SYSTEM_LIBS})
+  target_include_directories(${exe} PRIVATE ${CMAKE_SOURCE_DIR}/src/libjasper/include)
+endforeach()
