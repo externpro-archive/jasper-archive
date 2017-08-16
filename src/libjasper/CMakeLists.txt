@@ -179,16 +179,28 @@ set(ras_srcs
 source_group(ras FILES ${ras_srcs})
 list(APPEND ${lib_name}_libsrcs ${ras_srcs})
 #######################################
+# version
+if(NOT DEFINED JASPER_VER)
+  set(JASPER_VER ${JAS_VERSION})
+elseif(NOT ${JASPER_VER} STREQUAL ${JAS_VERSION})
+  message(AUTHOR_WARNING "version passed in (${JASPER_VER}) doesn't match version from configure.cmake (${JAS_VERSION})")
+endif()
+set(ver _${JASPER_VER})
+set(verDir /${PROJECT_NAME}${ver})
+#######################################
 # library
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
-# strip off the "lib" prefix, since it's already libjasper
-set_target_properties(${lib_name} PROPERTIES PREFIX "")
+set_target_properties(${lib_name} PROPERTIES
+  OUTPUT_NAME ${lib_name}${ver}
+  PREFIX "" # strip off the "lib" prefix, since it's already libjasper
+  )
 #######################################
 # install
-install(TARGETS ${lib_name} EXPORT ${PROJECT_NAME}-targets
+set(targetsFile ${PROJECT_NAME}${ver}-targets)
+install(TARGETS ${lib_name} EXPORT ${targetsFile}
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   )
-install(FILES ${include_srcs} DESTINATION include/jasper)
-install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib/cmake)
+install(FILES ${include_srcs} DESTINATION include${verDir}/${PROJECT_NAME})
+install(EXPORT ${targetsFile} DESTINATION lib/cmake)
